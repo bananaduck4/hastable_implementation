@@ -2,16 +2,18 @@
 
 int Hashtable::Hash(int key)
 {
-    return key % hash_size;
+    return key % hash_size; // returns a value as an index within the table
 }
 
 bool Hashtable::is_empty() const
 {
-    int size = 0;
-    for (int i = 0; i < hash_size; i++)
+    for (int i = 0; i < hash_size; i++) // add all the size of each list wiithn the table
     {
-        size += table[i].size();
+        if (table[i].size() != 0)
+        {
+            return 0;
+        }
     }
 
-    return size == 0;
+    return 1;
 }
