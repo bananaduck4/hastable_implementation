@@ -34,3 +34,18 @@ void Hashtable::insert_value(int key, string value)
 
     bucket.emplace_back(key, value);
 }
+
+void Hashtable::delete_value(int key)
+{
+    int hash_index = Hash(key);
+    auto &bucket = table[hash_index];
+
+    for (auto curr = bucket.begin(); curr != bucket.end(); curr++)
+    {
+        if (curr->first == key)
+        {
+            bucket.erase(curr);
+            return;
+        }
+    }
+}
