@@ -49,3 +49,17 @@ void Hashtable::delete_value(int key)
         }
     }
 }
+
+string Hashtable::search_table(int key)
+{
+    int hash_index = Hash(key);
+    auto &bucket = table[hash_index];
+
+    for (auto curr = bucket.begin(); curr != bucket.end(); curr++)
+    {
+        if (curr->first == key)
+        {
+            return curr->second;
+        }
+    }
+}
