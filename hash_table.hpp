@@ -21,6 +21,6 @@ class Hashtable
         void delete_value(int key);
         string search_table(int key);
         void print_table();
-}   
+};
 
 #endif

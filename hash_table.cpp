@@ -7,7 +7,7 @@ int Hashtable::Hash(int key)
 
 bool Hashtable::is_empty() const
 {
-    for (int i = 0; i < hash_size; i++) // add all the size of each list wiithn the table
+    for (int i = 0; i < hash_size; i++) // return false when a list is nonzero
     {
         if (table[i].size() != 0)
         {
@@ -16,4 +16,13 @@ bool Hashtable::is_empty() const
     }
 
     return 1;
+}
+
+void Hashtable::insert_value(int key, string value)
+{
+    int hash_index = Hash(key);
+    auto pair = next(table->begin(), hash_index);
+
+    pair->first = key;
+    pair->second = value;
 }
