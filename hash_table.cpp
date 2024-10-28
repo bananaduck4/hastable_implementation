@@ -7,7 +7,7 @@ int Hashtable::Hash(int key)
 
 bool Hashtable::is_empty() const
 {
-    for (int i = 0; i < hash_size; i++) // return false when a list is nonzero
+    for (int i = 0; i < hash_size; i++) // return false when a list is nonzero in the table
     {
         if (table[i].size() != 0)
         {
@@ -21,8 +21,16 @@ bool Hashtable::is_empty() const
 void Hashtable::insert_value(int key, string value)
 {
     int hash_index = Hash(key);
-    auto pair = next(table->begin(), hash_index);
+    auto &bucket = table[hash_index]; // bucket is a reference of the list of the hashed pair (changes to bucket affect the list)
 
-    pair->first = key;
-    pair->second = value;
+    for (auto curr = bucket.begin(); curr != bucket.end(); curr++)
+    {
+        if (curr->first == key)
+        {
+            curr->second = value;
+            return;
+        }
+    }
+
+    bucket.emplace_back(key, value);
 }

@@ -12,7 +12,7 @@ class Hashtable
 {
     private:
         static const int hash_size = 10;
-        list<pair<int, string>> table[hash_size];
+        list<pair<int, string>> table[hash_size]; //each element is a list of pairs (buckets)
 
     public:
         int Hash(int key);
