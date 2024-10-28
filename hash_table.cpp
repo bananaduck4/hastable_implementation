@@ -63,3 +63,17 @@ string Hashtable::search_table(int key)
         }
     }
 }
+
+void Hashtable::print_table()
+{
+    for (int i = 0; i < hash_size; i++)
+    {
+        auto &bucket = table[i];
+        if (!bucket.size())
+            continue;
+        for (auto curr = bucket.begin(); curr != bucket.end(); curr++)
+        {
+            cout << "Key: " << curr->first << " Value: " << curr->second << endl;
+        }
+    }
+}
